@@ -25,10 +25,36 @@
   justify-content: center;
 }
 
-.Login-Button {
+.SignIn-Button {
   justify-content: right;
   top: 20px;
   right: 20px;
+  padding: 20px
+}
+
+.SignIn-Window {
+  background-color: gray;
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+}
+
+.SignIn-Info {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.SignIn-Input {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.SignIn-Button {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
 }
 
 .App-link {

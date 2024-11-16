@@ -1,14 +1,15 @@
 import './App.css';
 import { useState } from 'react';
 import axios from 'axios';
+import Popup from 'reactjs-popup';
 
 function App() {
   const [item, setTheme] = useState("");
   const [gift, setGift] = useState("");
   const [age, setAge] = useState(25);
   const [additional, setAdditional] = useState("")
-  function Login() {
-    console.log("login button pressed")
+  function SignIn() {
+    console.log("Sign in button pressed")
   }
   function handleItemTheme(event) {
     setTheme(event.target.value)
@@ -45,9 +46,47 @@ function App() {
         <div className="Title">
           <h1>Gift Giver</h1>
         </div>
-        <div className="Login-Button">
-          <button onClick = {Login}>
-            Login</button>
+        <div className="SignIn-Button">
+          <div>
+            <Popup trigger=
+              {<button>Sign in</button>} 
+                modal nested>
+                {
+                  close => (
+                    <div className="SignIn-Window">
+                      <div className="SignIn-Info">
+                        <p1>E-mail</p1>
+                        <p1>Password</p1>
+                      </div>
+                      <div className="SignIn-Input">
+                        <textarea
+                          cols = {20}
+                          rows = {1}
+                        ></textarea>
+                        <textarea
+                          cols = {20}
+                          rows = {1}
+                        ></textarea>
+                      </div>
+                      <div className="SignIn-Buttons">
+                        <div>
+                          <button onClick=
+                            {() => SignIn()}>
+                            Sign in
+                          </button>
+                        </div>
+                        <div>
+                          <button onClick=
+                            {() => close()}>
+                            Exit
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  )
+                }
+            </Popup>
+          </div>
         </div>
       </div>
       <div className="Main">
