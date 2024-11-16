@@ -13,15 +13,24 @@
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+
+
+.Navigation-Bar {
+  justify-content: space-between;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
+  background-color: beige;
+}
+
+.Title {
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+}
+
+.Login-Button {
+  justify-content: right;
+  top: 20px;
+  right: 20px;
 }
 
 .App-link {
@@ -35,4 +44,18 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.Main {
+  display: flex;
+}
+
+.History {
+  background-color: lightgray;
+  width: 20%
+}
+
+.Query {
+  background-color: white;
+  width: 80%
 }
