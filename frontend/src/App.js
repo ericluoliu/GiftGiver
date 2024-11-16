@@ -3,15 +3,15 @@ import { useState } from 'react';
 import axios from 'axios';
 
 function App() {
-  const [item, setQuery] = useState("");
+  const [item, setTheme] = useState("");
   const [gift, setGift] = useState("");
   const [age, setAge] = useState(25);
   const [additional, setAdditional] = useState("")
   function Login() {
     console.log("login button pressed")
   }
-  function QueryHandler(event) {
-    setQuery(event.target.value)
+  function handleItemTheme(event) {
+    setTheme(event.target.value)
   }
   function handleAgeChange(event) {
     setAge(event.target.value);
@@ -58,16 +58,16 @@ function App() {
           <h1>Welcome to GiftGive! What type of gifts are you looking for?</h1>
           <div className="Input">
             <div className="Item">
-              <p1>Item type</p1>
+              <p1>Item Theme:</p1>
               <textarea
                 cols = {20}
                 rows = {4}
                 value = {item}
-                onChange = {QueryHandler}
+                onChange = {handleItemTheme}
               ></textarea>
             </div>
             <div className="Age">
-              <p1>Age</p1>
+              <p1>Age:</p1>
               <div>
                 <input
                   type="range"
@@ -81,7 +81,7 @@ function App() {
               </div>
             </div>
             <div className="Additional">
-              <p1>Additional Information</p1>
+              <p1>Additional Information:</p1>
               <textarea
                 cols = {20}
                 rows = {4}
