@@ -70,14 +70,12 @@ function App() {
                       </div>
                       <div className="SignIn-Buttons">
                         <div>
-                          <button onClick=
-                            {() => SignIn()}>
+                          <button onClick = {SignIn}>
                             Sign in
                           </button>
                         </div>
                         <div>
-                          <button onClick=
-                            {() => close()}>
+                          <button onClick= {close}>
                             Exit
                           </button>
                         </div>
