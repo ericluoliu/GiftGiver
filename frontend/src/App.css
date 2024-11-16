@@ -13,8 +13,6 @@
   }
 }
 
-
-
 .Navigation-Bar {
   justify-content: space-between;
   display: flex;
@@ -57,5 +55,27 @@
 
 .Query {
   background-color: white;
-  width: 80%
+  width: 80%;
+}
+
+.Input {
+  border-color: black;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.Item {
+  display: flex;
+  flex-direction: column;
+}
+
+.Age {
+  display: flex;
+  flex-direction: column;
+}
+
+.Additional {
+  display: flex;
+  flex-direction: column;
 }

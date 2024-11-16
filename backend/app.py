@@ -11,7 +11,8 @@ model = genai.GenerativeModel("gemini-1.5-flash")
 
 @app.route("/", methods = ['POST'])
 def getAI():
-    response = model.generate_content(request.json.get("input_query"))
+    query = request.json.get("input_query")
+    response = model.generate_content(f"generate 5 gift items in bullet point form related to {query}")
     return jsonify({"message": response.text})
 
 app.run(port=5050)

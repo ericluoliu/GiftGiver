@@ -5,6 +5,7 @@ import axios from 'axios';
 function App() {
   const [query, setQuery] = useState("");
   const [gift, setGift] = useState("");
+  const [age, setAge] = useState("")
   function QueryHandler(event) {
     setQuery(event.target.value)
   }
@@ -22,6 +23,9 @@ function App() {
   }
   function Login() {
     console.log("login button pressed")
+  }
+  function handleAgeChange(event) {
+    setAge(event.target.value);
   }
   return (
     <div className="App">
@@ -43,12 +47,40 @@ function App() {
         </div>
         <div className="Query">
           <h1>Welcome to GiftGive! What type of gifts are you looking for?</h1>
-          <textarea
-            cols = {70}
-            rows = {4}
-            value = {query}
-            onChange = {QueryHandler}
-          ></textarea>
+          <div className="Input">
+            <div className="Item">
+              <p1>Item type</p1>
+              <textarea
+                cols = {20}
+                rows = {4}
+                value = {query}
+                onChange = {QueryHandler}
+              ></textarea>
+            </div>
+            <div className="Age">
+              <p1>Age</p1>
+              <div>
+                <input
+                  type="range"
+                  id="slider"
+                  min="0"
+                  max="100"
+                  value={age}
+                  onChange={handleAgeChange}
+                />
+              <p>Value: {age}</p>
+              </div>
+            </div>
+            <div className="Additional">
+              <p1>Additional Information</p1>
+              <textarea
+                cols = {20}
+                rows = {4}
+                value = {query}
+                onChange = {QueryHandler}
+              ></textarea>
+            </div>
+          </div>
           <button
             onClick = {Send}
           >Send</button>
