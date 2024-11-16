@@ -9,7 +9,7 @@ function App() {
     setQuery(event.target.value)
   }
   function Send() {
-    axios.post('http://127.0.0.1:5050/', {
+    axios.post('http://127.0.0.1:5050/generate', {
       input_query: query
     })
     .then(function (response) {
@@ -22,6 +22,13 @@ function App() {
   }
   function Login() {
     console.log("login button pressed")
+    // CURRENTLY IN PROGRESS basic code to connect backend w/frontend
+    axios.post('http://127.0.0.1:5050/login', { username, password })
+    .then(response => {
+      console.log(response.data.message); // Logs "Login successful"
+    })
+    .catch(error => console.error(error));
+  }
   }
   return (
     <div className="App">
