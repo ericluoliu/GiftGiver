@@ -3,29 +3,38 @@ import { useState } from 'react';
 import axios from 'axios';
 
 function App() {
-  const [query, setQuery] = useState("");
+  const [item, setQuery] = useState("");
   const [gift, setGift] = useState("");
-  const [age, setAge] = useState("")
+  const [age, setAge] = useState(25);
+  const [additional, setAdditional] = useState("")
+  function Login() {
+    console.log("login button pressed")
+  }
   function QueryHandler(event) {
     setQuery(event.target.value)
   }
+  function handleAgeChange(event) {
+    setAge(event.target.value);
+  }
+  function handleAdditional(event) {
+    setAdditional(event.target.value);
+  }
   function Send() {
+    console.log(item, age, additional);
     axios.post('http://127.0.0.1:5050/', {
-      input_query: query
+      input_item: item,
+      input_age: age,
+      input_additional: additional 
     })
     .then(function (response) {
+      // Where array list of 5 items is received
+      // TODO: Melody start your card display here
       console.log(response)
       setGift(response.data['message']);
     })
     .catch(function (error) {
       console.log(error);
     })
-  }
-  function Login() {
-    console.log("login button pressed")
-  }
-  function handleAgeChange(event) {
-    setAge(event.target.value);
   }
   return (
     <div className="App">
@@ -53,7 +62,7 @@ function App() {
               <textarea
                 cols = {20}
                 rows = {4}
-                value = {query}
+                value = {item}
                 onChange = {QueryHandler}
               ></textarea>
             </div>
@@ -76,8 +85,8 @@ function App() {
               <textarea
                 cols = {20}
                 rows = {4}
-                value = {query}
-                onChange = {QueryHandler}
+                value = {additional}
+                onChange = {handleAdditional}
               ></textarea>
             </div>
           </div>
