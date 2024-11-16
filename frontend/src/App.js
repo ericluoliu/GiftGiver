@@ -1,7 +1,6 @@
 import './App.css';
 import { useState } from 'react';
 import axios from 'axios';
-import { LucideHelpCircle } from 'lucide-react';
 
 function App() {
   const [query, setQuery] = useState("");
