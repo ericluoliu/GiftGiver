@@ -36,4 +36,4 @@ def parseResponse(response):
     giftItems.append(gift)
     return giftItems
 
-app.run(port=5050, debug=True)
+app.run(port=5050)
