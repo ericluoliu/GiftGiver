@@ -9,7 +9,10 @@ CORS(app)
 genai.configure(api_key="AIzaSyCFSndRnJpXXIYpt_AykTrrPUIZ85cxTks")
 model = genai.GenerativeModel("gemini-1.5-flash")
 
-@app.route("/", methods = ['POST'])
+# Recieves query information from frontend
+# Query request includes input_item, input_age, and input_additional
+# Returns message generated through Gemini
+@app.route("/query", methods = ['POST'])
 def getAI():
     item = request.json.get("input_item")
     age = request.json.get("input_age")
@@ -35,5 +38,15 @@ def parseResponse(response):
             gift += c
     giftItems.append(gift)
     return giftItems
+
+# Receives login information from frontend
+# Login information includes user_email and user_password
+@app.route("/login", methods = ['POST'])
+def login():
+    email = request.json.get("user_email")
+    password = request.json.get("user_password")
+    print(f"Email and password received")
+    print(f"email: {email}  password: {password}")
+    return jsonify({"login request": "login request received"})
 
 app.run(port=5050)

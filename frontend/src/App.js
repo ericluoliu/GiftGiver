@@ -4,15 +4,54 @@ import axios from 'axios';
 import Popup from 'reactjs-popup';
 
 function App() {
-  const [item, setTheme] = useState("");
-  const [gift, setGift] = useState("");
+
+  // Variables for query to Gemini
+  const [itemTheme, setTheme] = useState("");
   const [age, setAge] = useState(25);
   const [additional, setAdditional] = useState("")
-  function SignIn() {
-    console.log("Sign in button pressed")
+  const [gift, setGift] = useState("");
+
+  // Sends itemTheme, age, and additional variables to backend and receives array of 5 strings for gifts
+  function Send() {
+    console.log(itemTheme, age, additional);
+    axios.post('http://127.0.0.1:5050/query', {
+      input_item: itemTheme,
+      input_age: age,
+      input_additional: additional 
+    })
+    .then(function(response) {
+      // Where array list of 5 items is received
+      // TODO: Melody start your card display here
+      console.log(response)
+      setGift(response.data['message']);
+    })
+    .catch(function(error) {
+      console.log(error);
+    })
   }
+
+  // Sends email and password to backend and return "login successful" message
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  function Login() {
+    console.log("Logging in")
+    console.log("Email: " + email);
+    console.log("Password: " + password);
+    axios.post("http://127.0.0.1:5050/login", {
+      user_email: email,
+      user_password: password
+    })
+    .then(function(response) {
+      console.log(response)
+    })
+    .catch(function(error) {
+      console.log(error);
+    })
+  }
+
+  // Handles changes in itemTheme, age, additional, email, and password variables
   function handleItemTheme(event) {
-    setTheme(event.target.value)
+    setTheme(event.target.value);
   }
   function handleAgeChange(event) {
     setAge(event.target.value);
@@ -20,23 +59,17 @@ function App() {
   function handleAdditional(event) {
     setAdditional(event.target.value);
   }
-  function Send() {
-    console.log(item, age, additional);
-    axios.post('http://127.0.0.1:5050/', {
-      input_item: item,
-      input_age: age,
-      input_additional: additional 
-    })
-    .then(function (response) {
-      // Where array list of 5 items is received
-      // TODO: Melody start your card display here
-      console.log(response)
-      setGift(response.data['message']);
-    })
-    .catch(function (error) {
-      console.log(error);
-    })
+  function handleEmail(event) {
+    setEmail(event.target.value);
   }
+  function handlePassword(event) {
+    setPassword(event.target.value);
+  }
+
+  // Page is divided into Navigation-Bar on top and Main below
+  // Login-Button located in Navigation-Bar opens a popup Login-Window
+  // Main is a flex box with sections History and Query
+  // Query is divided into header, Input, button to send, and another header for gift
   return (
     <div className="App">
       <div className="Navigation-Bar">
@@ -46,43 +79,45 @@ function App() {
         <div className="Title">
           <h1>Gift Giver</h1>
         </div>
-        <div className="SignIn-Button">
+        <div className="Login-Button">
           <div>
             <Popup trigger=
-              {<button>Sign in</button>} 
-                modal nested>
-                {
-                  close => (
-                    <div className="SignIn-Window">
-                      <div className="SignIn-Info">
-                        <p1>E-mail</p1>
-                        <p1>Password</p1>
-                      </div>
-                      <div className="SignIn-Input">
-                        <textarea
-                          cols = {20}
-                          rows = {1}
-                        ></textarea>
-                        <textarea
-                          cols = {20}
-                          rows = {1}
-                        ></textarea>
-                      </div>
-                      <div className="SignIn-Buttons">
-                        <div>
-                          <button onClick = {SignIn}>
-                            Sign in
-                          </button>
-                        </div>
-                        <div>
-                          <button onClick= {close}>
-                            Exit
-                          </button>
-                        </div>
-                      </div>
+              {<button>Login</button>} 
+              modal nested>{
+              close => (
+                <div className="Login-Window">
+                  <div className="Login-Info">
+                    <p1>E-mail</p1>
+                    <p1>Password</p1>
+                  </div>
+                  <div className="Login-Input">
+                    <textarea
+                      cols = {35}
+                      rows = {1}
+                      value = {email}
+                      onChange = {handleEmail}
+                    ></textarea>
+                    <textarea
+                      cols = {35}
+                      rows = {1}
+                      value = {password}
+                      onChange = {handlePassword}
+                    ></textarea>
+                  </div>
+                  <div className="Login-Buttons">
+                    <div>
+                      <button onClick = {Login}>
+                        Sign in
+                      </button>
                     </div>
-                  )
-                }
+                    <div>
+                      <button onClick= {close}>
+                        Exit
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              )}
             </Popup>
           </div>
         </div>
@@ -99,7 +134,7 @@ function App() {
               <textarea
                 cols = {20}
                 rows = {4}
-                value = {item}
+                value = {itemTheme}
                 onChange = {handleItemTheme}
               ></textarea>
             </div>

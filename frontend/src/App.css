@@ -25,33 +25,33 @@
   justify-content: center;
 }
 
-.SignIn-Button {
+.Login-Button {
   justify-content: right;
   top: 20px;
   right: 20px;
   padding: 20px
 }
 
-.SignIn-Window {
+.Login-Window {
   background-color: gray;
-  padding: 10px;
+  padding: 25px;
   display: flex;
   flex-direction: row;
 }
 
-.SignIn-Info {
+.Login-Info {
   padding: 10px;
   display: flex;
   flex-direction: column;
 }
 
-.SignIn-Input {
+.Login-Input {
   padding: 10px;
   display: flex;
   flex-direction: column;
 }
 
-.SignIn-Button {
+.Login-Button {
   padding: 10px;
   display: flex;
   flex-direction: column;
