@@ -58,7 +58,7 @@ function App() {
     console.log("New Password: " + newPassword);
     axios.post("http://127.0.0.1:5050/register", {
       new_username: newUsername,
-      new_password: password
+      new_password: newPassword
     })
     .then(function(response) {
       console.log(response);

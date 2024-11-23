@@ -2,12 +2,16 @@
 
 from flask import Flask, request, jsonify
 from flask_cors import CORS
+from pymongo import MongoClient
 import google.generativeai as genai
 
 app = Flask(__name__)
 CORS(app)
 genai.configure(api_key="AIzaSyCFSndRnJpXXIYpt_AykTrrPUIZ85cxTks")
 model = genai.GenerativeModel("gemini-1.5-flash")
+uri = "mongodb://localhost:27017/"
+client = MongoClient(uri)
+database = client["GiftGiver"]
 
 
 # Recieves query information from frontend
@@ -51,7 +55,12 @@ def login():
     password = request.json.get("user_password")
     print(f"username and password received")
     print(f"username: {username}    password: {password}")
-    return jsonify({"login request" : "login request received"})
+    collection = database["users"]
+    user = collection.find_one({"username": username})
+    if user and password == user.get("password"):
+        # on successful login, load user history
+        return jsonify({"login status" : "successful login"})
+    return jsonify({"login status" : "failed login"})
 
 
 # Receives register information from frontend
@@ -63,7 +72,12 @@ def register():
     newPassword = request.json.get("new_password")
     print(f"new username and  password received")
     print(f"new username: {newUsername}     new password: {newPassword}")
-    return jsonify({"registration request" : "registration request received"})
+    collection = database["users"]
+    # make sure login isn't already present
+    if not collection.find_one({"username": newUsername}): 
+        collection.insert_one({"username": newUsername, "password": newPassword})
+        return jsonify({"registration status" : "successful registration"})
+    return jsonify({"registration status" : "failed registration"})
 
 
 app.run(port=5050)
