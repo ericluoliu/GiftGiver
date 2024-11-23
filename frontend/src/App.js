@@ -10,7 +10,7 @@ function App() {
   const [age, setAge] = useState(25);
   const [additional, setAdditional] = useState("")
   const [gift, setGift] = useState("");
-
+  
   // Sends itemTheme, age, and additional variables to backend and receives array of 5 strings for gifts
   function Send() {
     console.log(itemTheme, age, additional);
@@ -30,6 +30,8 @@ function App() {
     })
   }
 
+  // Logged User: To store queries and view user history
+  const [loggedUser, setLoggedUser] = useState("");
   // Login: Sends username and password to backend and return "login request received" message
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -43,6 +45,7 @@ function App() {
     })
     .then(function(response) {
       console.log(response);
+      // Add login function - IF SUCCESS, update user so that we can store queries
     })
     .catch(function(error) {
       console.log(error);
@@ -62,6 +65,7 @@ function App() {
     })
     .then(function(response) {
       console.log(response);
+      // Add registration function - IF SUCCESS, update user (log in automatically) so that we can store queries
     })
     .catch(function(error) {
       console.log(error);
@@ -89,6 +93,9 @@ function App() {
   }
   function handleNewPassword(event) {
     setNewPassword(event.target.value);
+  }
+  function handleLoggedUser(event) {
+    setLoggedUser(event.target.value);
   }
 
   // Page is divided into Navigation-Bar on top and Main below

@@ -13,7 +13,6 @@ uri = "mongodb://localhost:27017/"
 client = MongoClient(uri)
 database = client["GiftGiver"]
 
-
 # Recieves query information from frontend
 # Query request includes input_item, input_age, and input_additional
 # Query data obtained through request.json.get("<key name>")
@@ -23,13 +22,18 @@ def getAI():
     item = request.json.get("input_item")
     age = request.json.get("input_age")
     additional = request.json.get("input_additional")
+    # what if they get a query before logging in?
+    # include a way to get username from frontend: username = request.json.get("user_username")
+    collection = database["users"]
     if additional == None:
         prompt = f"Generate 5 gift items in bullet point form related to {item}, the receipient is {age} years old. Give me raw text with no descriptions of the items."
     else:
         prompt = f"Generate 5 gift items in bullet point form related to {item}, the receipient is {age} years old. Here is some additional information about the person: {additional}. Give me raw text with no descriptions of the items."
     print(prompt)
-    response = model.generate_content(prompt)
-    return jsonify({"message": parseResponse(response.text)})
+    response = parseResponse(model.generate_content(prompt).text)
+    # once username is set properly, update user in mongoDB to add history
+    # collection.update_one({"username": username}, {"$set": {"history": response}})
+    return jsonify({"message": response})
 
 # Function to parse Gemini string repsonse into an array of 5 items
 def parseResponse(response):
@@ -73,11 +77,12 @@ def register():
     print(f"new username and  password received")
     print(f"new username: {newUsername}     new password: {newPassword}")
     collection = database["users"]
-    # make sure login isn't already present
     if not collection.find_one({"username": newUsername}): 
-        collection.insert_one({"username": newUsername, "password": newPassword})
+        collection.insert_one({"username": newUsername, "password": newPassword, "history": []})
         return jsonify({"registration status" : "successful registration"})
     return jsonify({"registration status" : "failed registration"})
+
+
 
 
 app.run(port=5050)
