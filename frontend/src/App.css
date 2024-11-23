@@ -1,3 +1,4 @@
+/* CSS for main page */
 .App {
   text-align: center;
 }
@@ -13,24 +14,6 @@
   }
 }
 
-.Navigation-Bar {
-  justify-content: space-between;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  background-color: beige;
-}
-
-.Title {
-  justify-content: center;
-}
-
-.Login-Button {
-  justify-content: right;
-  top: 20px;
-  right: 20px;
-}
-
 .App-link {
   color: #61dafb;
 }
@@ -44,20 +27,135 @@
   }
 }
 
-.Main {
+/*  
+Navigation Bar 
+Includes: Logo, Title, User-Info
+*/
+.Navigation-Bar {
+  height: 10%;
+  justify-content: space-between;
   display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: beige;
 }
 
-.History {
-  background-color: lightgray;
-  width: 20%
+.Logo {
+  width: 10%;
+  justify-content: center;
 }
 
-.Query {
-  background-color: white;
+.Title {
+  justify-content: center;
   width: 80%;
 }
 
+/*
+User-Interface: 
+  Login button & Login popup window 
+  Register button & Register popup window
+*/
+.User-Interface {
+  width: 10%;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+}
+
+/* Login Button */
+.Login-Button {
+  padding: 10px;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+}
+
+.Login-Window {
+  background-color: white;
+  padding: 25px;
+  display: flex;
+  flex-direction: row;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.Login-Info {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.Login-Input {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.Login-Options {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Register Button */
+.Register-Button {
+  padding: 10px;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+}
+
+.Register-Window {
+  background-color: white;
+  padding: 25px;
+  display: flex;
+  flex-direction: row;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.Register-Info {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.Register-Input {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.Register-Options {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+/*
+Main
+Includes: History, Query
+*/
+
+.Main {
+  height: 90%;
+  display: flex;
+  flex-direction: row;
+}
+
+/* History column */
+.History {
+  background-color: lightgray;
+  height: 100vh;
+  width: 20%
+}
+
+/* Query */
+.Query {
+  background-color: white;
+  height: 100vh;
+  width: 80%;
+}
+
+/* Query input */
 .Input {
   border-color: black;
   display: flex;
