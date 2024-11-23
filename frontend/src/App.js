@@ -10,7 +10,7 @@ function App() {
   const [itemTheme, setTheme] = useState("");
   const [age, setAge] = useState(25);
   const [additional, setAdditional] = useState("")
-  const [gift, setGift] = useState("");
+  const [gift, setGift] = useState([]);
 
   // Sends itemTheme, age, and additional variables to backend and receives array of 5 strings for gifts
   function Send() {
@@ -23,15 +23,15 @@ function App() {
     .then(function(response) {
       setGift(response.data['message']);
 
-      const meow = gift.map(item => {
-        return(
-          <Card
-          items = {item}
-          />
+      // const meow = gift.map(item => {
+      //   return(
+      //     <Card
+      //     items = {item}
+      //     />
           
-        )
+      //   )
     
-      })
+      // })
       console.log(response)
 
     })
@@ -100,6 +100,16 @@ function App() {
   function handleNewPassword(event) {
     setNewPassword(event.target.value);
   }
+
+  // const meow = gift.map(item => {
+  //   return(
+  //     <Card
+  //     items = {item}
+  //     />
+      
+  //   )
+
+  // })
 
   // Page is divided into Navigation-Bar on top and Main below
   // User-Interface located in Navigation-Bar contains Login-Button and Register-Button
@@ -242,7 +252,12 @@ function App() {
             onClick = {Send}
           >Send</button>
           <h3>
-            Gifts: {meow}
+            Gifts: {gift}
+            <div className="gifts">
+              {gift.map((str, index) => (
+                <Card key={index} title={str} />
+              ))}
+            </div>
           </h3>
         </div>
       </div>
