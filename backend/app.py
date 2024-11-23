@@ -23,7 +23,6 @@ def getAI():
     age = request.json.get("input_age")
     additional = request.json.get("input_additional")
     user = request.json.get("input_user")
-    # what if they get a query before logging in?
     collection = database["users"]
     if additional == None:
         prompt = f"Generate 5 gift items in bullet point form related to {item}, the receipient is {age} years old. Give me raw text with no descriptions of the items."
@@ -32,11 +31,17 @@ def getAI():
     print(f"Prompt: {prompt}")
     response = parseResponse(model.generate_content(prompt).text)
     print(f"Parsed Response: {response}")
-    # Add all 5 suggestions to user history
     print(f"Logged user: {user}")
-    history = collection.find_one({"username": user}).get("history")
-    collection.update_one({"username": user}, {"$set": {"history": history + [response]}})
-    return jsonify({"message": response})
+    # If user is logged in, also return updated user history
+    # Else, just return gemini response
+    if not user == "":
+        history = collection.find_one({"username": user}).get("history")
+        collection.update_one({"username": user}, {"$set": {"history": history + [response]}})
+        userHistory = collection.find_one({"username": user}).get("history")
+        print(userHistory)
+        return jsonify({"message": response, "history": userHistory})
+    else:
+        return jsonify({"message": response})
 
 # Function to parse Gemini string repsonse into an array of 5 items
 def parseResponse(response):
@@ -64,10 +69,15 @@ def login():
     print(f"username: {username}    password: {password}")
     collection = database["users"]
     user = collection.find_one({"username": username})
+
+    # If there is a successful login, also return users history
+    # Else, return "failed login"
     if user and password == user.get("password"):
-        # on successful login, load user history
-        return jsonify({"login status" : "successful login"})
-    return jsonify({"login status" : "failed login"})
+        userHistory = user.get("history")
+        print(userHistory)
+        return jsonify({"login status" : "successful login", "history": userHistory})
+    else:
+        return jsonify({"login status" : "failed login"})
 
 
 # Receives register information from frontend
@@ -80,10 +90,14 @@ def register():
     print(f"new username and  password received")
     print(f"new username: {newUsername}     new password: {newPassword}")
     collection = database["users"]
+
+    # If there is a successful registration, also return users history
+    # Else, return "failed registration"
     if not collection.find_one({"username": newUsername}):
         print("username not in database, now registering...")
         collection.insert_one({"username": newUsername, "password": newPassword, "history": []})
-        return jsonify({"registration status" : "successful registration"})
+        userHistory = collection.find_one({"username": newUsername}).get("history")
+        return jsonify({"registration status" : "successful registration", "history": userHistory})
     else:
         print("username already in database, not registered")
         return jsonify({"registration status" : "failed registration"})
