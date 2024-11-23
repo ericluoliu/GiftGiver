@@ -22,17 +22,20 @@ def getAI():
     item = request.json.get("input_item")
     age = request.json.get("input_age")
     additional = request.json.get("input_additional")
+    user = request.json.get("input_user")
     # what if they get a query before logging in?
-    # include a way to get username from frontend: username = request.json.get("user_username")
     collection = database["users"]
     if additional == None:
         prompt = f"Generate 5 gift items in bullet point form related to {item}, the receipient is {age} years old. Give me raw text with no descriptions of the items."
     else:
         prompt = f"Generate 5 gift items in bullet point form related to {item}, the receipient is {age} years old. Here is some additional information about the person: {additional}. Give me raw text with no descriptions of the items."
-    print(prompt)
+    print(f"Prompt: {prompt}")
     response = parseResponse(model.generate_content(prompt).text)
-    # once username is set properly, update user in mongoDB to add history
-    # collection.update_one({"username": username}, {"$set": {"history": response}})
+    print(f"Parsed Response: {response}")
+    # Add all 5 suggestions to user history
+    print(f"Logged user: {user}")
+    history = collection.find_one({"username": user}).get("history")
+    collection.update_one({"username": user}, {"$set": {"history": history + [response]}})
     return jsonify({"message": response})
 
 # Function to parse Gemini string repsonse into an array of 5 items
@@ -77,12 +80,13 @@ def register():
     print(f"new username and  password received")
     print(f"new username: {newUsername}     new password: {newPassword}")
     collection = database["users"]
-    if not collection.find_one({"username": newUsername}): 
+    if not collection.find_one({"username": newUsername}):
+        print("username not in database, now registering...")
         collection.insert_one({"username": newUsername, "password": newPassword, "history": []})
         return jsonify({"registration status" : "successful registration"})
-    return jsonify({"registration status" : "failed registration"})
-
-
+    else:
+        print("username already in database, not registered")
+        return jsonify({"registration status" : "failed registration"})
 
 
 app.run(port=5050)
