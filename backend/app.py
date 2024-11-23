@@ -12,7 +12,8 @@ model = genai.GenerativeModel("gemini-1.5-flash")
 
 # Recieves query information from frontend
 # Query request includes input_item, input_age, and input_additional
-# Returns message generated through Gemini
+# Query data obtained through request.json.get("<key name>")
+# Returns message generated through Gemini as string
 @app.route("/query", methods = ['POST'])
 def getAI():
     item = request.json.get("input_item")
@@ -26,7 +27,7 @@ def getAI():
     response = model.generate_content(prompt)
     return jsonify({"message": parseResponse(response.text)})
 
-# Function to parse Gemini repsonse into an array of 5 items
+# Function to parse Gemini string repsonse into an array of 5 items
 def parseResponse(response):
     giftItems = []
     gift = ""
@@ -43,6 +44,7 @@ def parseResponse(response):
 
 # Receives login information from frontend
 # Login information includes user_username and user_password
+# Login data obtained through request.json.get("<key name>")
 @app.route("/login", methods = ['POST'])
 def login():
     username = request.json.get("user_username")
@@ -54,6 +56,7 @@ def login():
 
 # Receives register information from frontend
 # Login information includes new_username and new_password
+# Registration data obtained through request.json.get("<key name>")
 @app.route("/register", methods = ['POST'])
 def register():
     newUsername = request.json.get("new_username")

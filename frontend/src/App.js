@@ -68,7 +68,7 @@ function App() {
     })
   }
 
-  // Handles changes in itemTheme, age, additional, username, and password variables
+  // Handles changes in itemTheme, age, additional, username, password, newUsername and newPassword variables
   function handleItemTheme(event) {
     setTheme(event.target.value);
   }
