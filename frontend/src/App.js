@@ -2,6 +2,7 @@ import './App.css';
 import { useState } from 'react';
 import axios from 'axios';
 import Popup from 'reactjs-popup';
+import Card from './Card';
 
 function App() {
 
@@ -20,10 +21,19 @@ function App() {
       input_additional: additional 
     })
     .then(function(response) {
-      // Where array list of 5 items is received
-      // TODO: Melody start your card display here
-      console.log(response)
       setGift(response.data['message']);
+
+      const meow = gift.map(item => {
+        return(
+          <Card
+          items = {item}
+          />
+          
+        )
+    
+      })
+      console.log(response)
+
     })
     .catch(function(error) {
       console.log(error);
@@ -232,7 +242,7 @@ function App() {
             onClick = {Send}
           >Send</button>
           <h3>
-            Gifts: {gift}
+            Gifts: {meow}
           </h3>
         </div>
       </div>
