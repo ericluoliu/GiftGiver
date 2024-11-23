@@ -10,6 +10,8 @@ function App() {
   const [age, setAge] = useState(25);
   const [additional, setAdditional] = useState("")
   const [gift, setGift] = useState("");
+  const [loggedUser, setLoggedUser] = useState("")
+  // Logged User: To store queries and view user history
   
   // Sends itemTheme, age, and additional variables to backend and receives array of 5 strings for gifts
   function Send() {
@@ -17,7 +19,8 @@ function App() {
     axios.post('http://127.0.0.1:5050/query', {
       input_item: itemTheme,
       input_age: age,
-      input_additional: additional 
+      input_additional: additional,
+      input_user: loggedUser
     })
     .then(function(response) {
       // Where array list of 5 items is received
@@ -30,8 +33,6 @@ function App() {
     })
   }
 
-  // Logged User: To store queries and view user history
-  const [loggedUser, setLoggedUser] = useState("");
   // Login: Sends username and password to backend and return "login request received" message
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -45,6 +46,14 @@ function App() {
     })
     .then(function(response) {
       console.log(response);
+      if (response.data['login status'] === 'successful login') {
+        console.log("Login Successful")
+        setLoggedUser(username)
+        console.log("Logged User: " + username)
+      }
+      else {
+        console.log("Login Failed")
+      }
       // Add login function - IF SUCCESS, update user so that we can store queries
     })
     .catch(function(error) {
@@ -64,8 +73,15 @@ function App() {
       new_password: newPassword
     })
     .then(function(response) {
-      console.log(response);
-      // Add registration function - IF SUCCESS, update user (log in automatically) so that we can store queries
+      console.log(response.data['registration status'])
+      if (response.data['registration status'] === 'successful registration') {
+        console.log("Registration Successful")
+        setLoggedUser(newUsername)
+        console.log("Logged User: " + newUsername)
+      }
+      else {
+        console.log("Registration Failed")
+      }
     })
     .catch(function(error) {
       console.log(error);
@@ -93,9 +109,6 @@ function App() {
   }
   function handleNewPassword(event) {
     setNewPassword(event.target.value);
-  }
-  function handleLoggedUser(event) {
-    setLoggedUser(event.target.value);
   }
 
   // Page is divided into Navigation-Bar on top and Main below
