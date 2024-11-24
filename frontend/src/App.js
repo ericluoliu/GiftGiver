@@ -3,6 +3,7 @@ import { useState } from 'react';
 import axios from 'axios';
 import Popup from 'reactjs-popup';
 
+
 function App() {
 
   // Variables for query to Gemini
@@ -285,11 +286,14 @@ function App() {
         <div className="History">
           {loginStatus ? (
             userHistory.map((query, indexOne) => (
-              userHistory.map((item, indexTwo) => (
-                <div key={indexTwo} style={{ margin: '10px', padding: '10px', backgroundColor: '#f0f0f0', border: '1px solid #ddd' }}>
-                  {item}
-                </div>
-            ))))
+              <div key={indexOne} style={{ margin: '10px', padding: '10px', backgroundColor: '#f0f0f0', border: '1px solid #ddd' }}>
+                {query.map((item, indexTwo) => (
+                  <div key={indexOne} style={{ margin: '10px', padding: '10px', backgroundColor: '#f0f0f0', border: '1px solid #ddd' }}>
+                    {item}
+                  </div>
+                ))}
+              </div>
+            ))
             ) : (
             <div>Login to view past search history</div>
             )
