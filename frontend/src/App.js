@@ -183,9 +183,11 @@ function App() {
           {loginStatus ? (
             <div className="Logged-In">
               <p1>Welcome {loggedUser}!</p1>
-              <button onClick={LogOut}>
-                Log Out
-              </button>
+              <div className="Logout-Button">
+                <button onClick={LogOut}>
+                  Log Out
+                </button>
+              </div>
             </div>
           ) : (
             <div className="Not-Logged-In">

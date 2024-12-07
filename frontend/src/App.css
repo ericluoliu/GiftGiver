@@ -76,14 +76,7 @@ User-Interface:
   flex-direction: column;
 }
 
-.Login-Button {
-  padding: 8px;
-  width: 80%;
-  display: flex;
-  flex-direction: column;
-}
-
-.Login-Button button, .Register-Button button {
+.Login-Button button, .Register-Button button, .Logout-Button button{
   background-color: #4B3D32; /* Adjust the color to your preference */
   color: white; /* Set the text color */
   border: 2px solid #4B3D32; /* Border color */
@@ -92,7 +85,20 @@ User-Interface:
   border-radius: 10px;
 }
 
+.Login-Button {
+  padding: 8px;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+}
+
 .Register-Button button {
+  background-color: #A67C52;
+  border-color: #A67C52;
+  color: beige; 
+}
+
+.Logout-Button button {
   background-color: #A67C52;
   border-color: #A67C52;
   color: beige; 
@@ -107,7 +113,11 @@ User-Interface:
   background-color: #8E6E3E;
   border-color: #8E6E3E;
   color: white;
-  
+}
+
+.Logout-Button button:hover {
+  background-color: #3A2A1F; /* Hover effect for a darker shade */
+  border-color: #3A2A1F;
 }
 
 .Login-Window {
