@@ -4,7 +4,6 @@ import axios from 'axios';
 import Popup from 'reactjs-popup';
 
 // Material UI imports
-import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 
 function App() {
@@ -172,7 +171,7 @@ function App() {
     <div className="App">
       <div className="Navigation-Bar">
         <div className="Logo">
-          <img src="/eric.jpg" style={{width: "200%", height: "100%"}}/>
+          <img src="/eric.jpg" alt="Eric's face" style={{width: "75px", height: "75px"}}/>
         </div>
         <div className="Title">
           <h1>Gift Giver</h1>
@@ -194,7 +193,7 @@ function App() {
                 close => (
                   <div className="Login-Window">
                     <div className="Login-Info">
-                      <p1>.</p1>
+                      <p1 className="Empty-Div">.</p1>
                       <p1>Username</p1>
                       <p1>Password</p1>
                     </div>
@@ -218,7 +217,7 @@ function App() {
                       ></textarea>
                     </div>
                     <div className="Login-Options">
-                      <p1>.</p1>
+                      <p1 className="Empty-Div">.</p1>
                       <div className="Login-Options-Buttons">
                         <button onClick = {Login}>
                           Log in
@@ -241,7 +240,7 @@ function App() {
                 close => (
                   <div className="Register-Window">
                     <div className="Register-Info">
-                      <p1>.</p1>
+                      <p1 className="Empty-Div">.</p1>
                       <p1>Username</p1>
                       <p1>Password</p1>
                     </div>
@@ -265,7 +264,7 @@ function App() {
                       ></textarea>
                     </div>
                     <div className="Register-Options">
-                      <p1>.</p1>
+                      <p1 className="Empty-Div">.</p1>
                       <div className="Register-Options-Buttons">
                         <button onClick = {Register}>
                           Register

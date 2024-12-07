@@ -146,6 +146,10 @@ User-Interface:
 .Error-Text {
   color: red;
 }
+
+.Empty-Div {
+  opacity: 0.0;
+}
 /*
 Main
 Includes: History, Query
