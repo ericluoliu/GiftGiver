@@ -256,7 +256,7 @@ function App() {
               </div>
             ))
             ) : (
-            <div>Login to view past search history</div>
+            <div className="HistoryText">Login to view history</div>
             )
           }
         </div>

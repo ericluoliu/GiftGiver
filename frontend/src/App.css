@@ -177,6 +177,20 @@ Includes: History, Query
   overflow-y: auto;
 }
 
+.HistoryText {
+  display: flex;
+  justify-content: center;  /* Center horizontally */
+  align-items: center;  
+  margin-top: 90%;
+  margin-left: 5%;
+  background-color: beige;
+  height: 60px;
+  width: 90%;
+  color: #4B3D32;
+  border-radius: 30px;
+  font-size:larger;
+}
+
 /* Query */
 .Query {
   background-color: white;
