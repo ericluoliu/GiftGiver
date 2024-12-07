@@ -177,7 +177,7 @@ function App() {
           <img src="/eric.jpg" alt="Eric's face" style={{width: "75px", height: "75px"}}/>
         </div>
         <div className="Title">
-          <h1>Gift Giver</h1>
+          <h1>GiftGiver</h1>
         </div>
         <div className="User-Interface">
           {loginStatus ? (
