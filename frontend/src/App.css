@@ -194,3 +194,10 @@ Includes: History, Query
   display: flex;
   flex-direction: column;
 }
+
+/* Gift output */
+.Gifts {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

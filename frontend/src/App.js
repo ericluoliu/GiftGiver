@@ -3,6 +3,9 @@ import { useState } from 'react';
 import axios from 'axios';
 import Popup from 'reactjs-popup';
 
+// Material UI imports
+import Stack from '@mui/material/Stack';
+import Button from '@mui/material/Button';
 
 function App() {
 
@@ -10,7 +13,7 @@ function App() {
   const [itemTheme, setTheme] = useState("");
   const [age, setAge] = useState(25);
   const [additional, setAdditional] = useState("")
-  const [gift, setGift] = useState("");
+  const [gift, setGift] = useState([]);
 
   // Logged User: To store queries and view user history
   const [loggedUser, setLoggedUser] = useState("")
@@ -336,12 +339,17 @@ function App() {
               ></textarea>
             </div>
           </div>
-          <button
-            onClick = {Send}
-          >Send</button>
+          <Button variant="outlined" onClick={Send}>Send</Button>
           <h3>
-            Gifts: {gift}
+            Gifts:
           </h3>
+          <div classname="Gifts">
+            {gift.map((item, index) => (
+              <div classname="Gift-Item" key={index} style={{ margin: '10px', padding: '10px', backgroundColor: '#f0f0f0', border: '1px solid #ddd' }}>
+                {item}
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>
