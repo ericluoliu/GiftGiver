@@ -241,7 +241,7 @@ function App() {
               </div>
             </div>
           )}
-        </div> 
+        </div>
       </div>
       <div className="Main">
         <div className="History">
