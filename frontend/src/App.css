@@ -87,26 +87,30 @@ User-Interface:
   background-color: white;
   padding: 25px;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  width: 60vh;
+  height: 25vh;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.Login-Info {
+.Login-Title {
   padding: 10px;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
 }
 
-.Login-Input {
+.Login-Username {
   padding: 10px;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: space-evenly;
 }
 
-.Login-Options {
+.Login-Password {
   padding: 10px;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: space-evenly;
 }
 
 /* Register Button */
@@ -121,26 +125,30 @@ User-Interface:
   background-color: white;
   padding: 25px;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  width: 60vh;
+  height: 25vh;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.Register-Info {
+.Register-Title {
   padding: 10px;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
 }
 
-.Register-Input {
+.Register-Username {
   padding: 10px;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: space-evenly;
 }
 
-.Register-Options {
+.Register-Password {
   padding: 10px;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: space-evenly;
 }
 
 .Error-Text {

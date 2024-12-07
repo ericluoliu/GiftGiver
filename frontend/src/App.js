@@ -4,7 +4,10 @@ import axios from 'axios';
 import Popup from 'reactjs-popup';
 
 // Material UI imports
+import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
+import Slider from '@mui/material/Slider';
 
 function App() {
 
@@ -192,42 +195,20 @@ function App() {
                 modal nested>{
                 close => (
                   <div className="Login-Window">
-                    <div className="Login-Info">
-                      <p1 className="Empty-Div">.</p1>
-                      <p1>Username</p1>
-                      <p1>Password</p1>
-                    </div>
-                    <div className="Login-Input">
+                    <div className="Login-Title">
                       {loginError ? (
                         <p1 className="Error-Text">There was an error logging in</p1>
                         ) : (
                         <p1>Please enter your login information</p1>
                       )}
-                      <textarea
-                        cols = {45}
-                        rows = {1}
-                        value = {username}
-                        onChange = {handleUsername}
-                      ></textarea>
-                      <textarea
-                        cols = {45}
-                        rows = {1}
-                        value = {password}
-                        onChange = {handlePassword}
-                      ></textarea>
                     </div>
-                    <div className="Login-Options">
-                      <p1 className="Empty-Div">.</p1>
-                      <div className="Login-Options-Buttons">
-                        <button onClick = {Login}>
-                          Log in
-                        </button>
-                      </div>
-                      <div className="Login-Options-Buttons">
-                        <button onClick= {() => handleClose(close)}>
-                          Exit
-                        </button>
-                      </div>
+                    <div className="Login-Username">
+                      <TextField fullwidth id="standard-basic" label="Username" variant="standard" value={username} onChange={handleUsername}/>
+                      <Button variant="outlined" onClick={Login}>Log in</Button>
+                    </div>
+                    <div className="Login-Password">
+                      <TextField fullwidth id="standard-basic" label="Password" variant="standard" value={password} onChange={handlePassword}/>
+                      <Button variant="outlined" onClick={() => handleClose(close)}>Exit</Button>
                     </div>
                   </div>
                 )}
@@ -239,42 +220,20 @@ function App() {
                 modal nested>{
                 close => (
                   <div className="Register-Window">
-                    <div className="Register-Info">
-                      <p1 className="Empty-Div">.</p1>
-                      <p1>Username</p1>
-                      <p1>Password</p1>
-                    </div>
-                    <div className="Register-Input">
+                    <div className="Register-Title">
                       {registerError ? (
                         <p1 className="Error-Text">There was an error while registering</p1>
                         ) : (
                         <p1>Please enter a username and password to register</p1>
                       )}
-                      <textarea
-                        cols = {45}
-                        rows = {1}
-                        value = {newUsername}
-                        onChange = {handleNewUsername}
-                      ></textarea>
-                      <textarea
-                        cols = {45}
-                        rows = {1}
-                        value = {newPassword}
-                        onChange = {handleNewPassword}
-                      ></textarea>
                     </div>
-                    <div className="Register-Options">
-                      <p1 className="Empty-Div">.</p1>
-                      <div className="Register-Options-Buttons">
-                        <button onClick = {Register}>
-                          Register
-                        </button>
-                      </div>
-                      <div className="Register-Options-Buttons">
-                        <button onClick= {() => handleClose(close)}>
-                          Exit
-                        </button>
-                      </div>
+                    <div className="Register-Username">
+                      <TextField id="standard-basic" label="New Username" variant="standard" value={newUsername} onChange={handleNewUsername}/>
+                      <Button variant="outlined" onClick={Register}>Register</Button>
+                    </div>
+                    <div className="Register-Password">
+                      <TextField id="standard-basic" label="New Password" variant="standard" value={newPassword} onChange={handleNewPassword}/>
+                      <Button variant="outlined" onClick={() => handleClose(close)}>Exit</Button>
                     </div>
                   </div>
                   )}
@@ -306,36 +265,30 @@ function App() {
           <h3>Enter the information below to get some gift ideas for your friend!</h3>
           <div className="Input">
             <div className="Item">
-              <p1>Item Theme:</p1>
-              <textarea
-                cols = {20}
-                rows = {4}
-                value = {itemTheme}
-                onChange = {handleItemTheme}
-              ></textarea>
+              <TextField
+                id="outlined-multiline-static"
+                label="Item Theme"
+                multiline
+                rows={4}
+                value={itemTheme}
+                onChange={handleItemTheme}
+              />
             </div>
             <div className="Age">
               <p1>Age:</p1>
-              <div>
-                <input
-                  type="range"
-                  id="slider"
-                  min="0"
-                  max="100"
-                  value={age}
-                  onChange={handleAgeChange}
-                />
-              <p>Value: {age}</p>
-              </div>
+              <Box sx={{ width: 150 }}>
+                <Slider defaultValue={25} aria-label="Default" valueLabelDisplay="auto" value={age} onChange={handleAgeChange}/>
+              </Box>
             </div>
             <div className="Additional">
-              <p1>Additional Information:</p1>
-              <textarea
-                cols = {20}
-                rows = {4}
-                value = {additional}
-                onChange = {handleAdditional}
-              ></textarea>
+              <TextField
+                id="outlined-multiline-static"
+                label="Additional Information"
+                multiline
+                rows={4}
+                value={additional}
+                onChange={handleAdditional}
+              />
             </div>
           </div>
           <Button variant="outlined" onClick={Send}>Send</Button>
