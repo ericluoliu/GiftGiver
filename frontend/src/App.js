@@ -177,7 +177,7 @@ function App() {
           <img src="/eric.jpg" alt="Eric's face" style={{width: "75px", height: "75px"}}/>
         </div>
         <div className="Title">
-          <h1>GiftGiver</h1>
+          <h1 style={{color: "#4B3D32"}}>GiftGiver</h1>
         </div>
         <div className="User-Interface">
           {loginStatus ? (
@@ -261,8 +261,8 @@ function App() {
           }
         </div>
         <div className="Query">
-          <h2>Welcome to GiftGiver!</h2>
-          <h3>Enter the information below to get some gift ideas for your friend!</h3>
+          <h2 style={{color: "#4B3D32"}}>Welcome to GiftGiver!</h2>
+          <h3 style={{color: "#4B3D32"}}>Enter the information below to get some gift ideas for your friend!</h3>
           <div className="Input">
             <div className="Item">
               <TextField
@@ -275,9 +275,9 @@ function App() {
               />
             </div>
             <div className="Age">
-              <p1>Age: {age}</p1>
+              <p1 style={{color: "#4B3D32" }}>Age: {age}</p1>
               <Box sx={{ width: 150 }}>
-                <Slider defaultValue={25} aria-label="Default" valueLabelDisplay="auto" value={age} onChange={handleAgeChange}/>
+                <Slider defaultValue={25} aria-label="Default" valueLabelDisplay="auto" value={age} onChange={handleAgeChange} style={{color: "#4B3D32" }}/>
               </Box>
             </div>
             <div className="Additional">
@@ -291,10 +291,8 @@ function App() {
               />
             </div>
           </div>
-          <Button variant="outlined" onClick={Send}>Send</Button>
-          <h3>
-            Gifts:
-          </h3>
+          <Button variant="outlined" onClick={Send} style={{color: "#4B3D32", borderColor: "#4B3D32" }}>Send</Button>
+          <h3 style={{color: "#4B3D32"}}>Gifts:</h3>
           <div classname="Gifts">
             {gift.map((item, index) => (
               <div classname="Gift-Item" key={index} style={{ margin: '10px', padding: '10px', backgroundColor: '#f0f0f0', border: '1px solid #ddd' }}>
