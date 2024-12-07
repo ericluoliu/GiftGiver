@@ -203,11 +203,11 @@ function App() {
                       )}
                     </div>
                     <div className="Login-Username">
-                      <TextField fullwidth id="standard-basic" label="Username" variant="standard" value={username} onChange={handleUsername}/>
+                      <TextField fullwidth id="username" label="Username" variant="standard"  value={username} onChange={handleUsername}/>
                       <Button variant="outlined" onClick={Login}>Log in</Button>
                     </div>
                     <div className="Login-Password">
-                      <TextField fullwidth id="standard-basic" label="Password" variant="standard" value={password} onChange={handlePassword}/>
+                      <TextField fullwidth id="password-basic" label="Password" variant="standard" value={password} onChange={handlePassword}/>
                       <Button variant="outlined" onClick={() => handleClose(close)}>Exit</Button>
                     </div>
                   </div>
@@ -228,11 +228,11 @@ function App() {
                       )}
                     </div>
                     <div className="Register-Username">
-                      <TextField id="standard-basic" label="New Username" variant="standard" value={newUsername} onChange={handleNewUsername}/>
+                      <TextField id="new-username" label="New Username" variant="standard" value={newUsername} onChange={handleNewUsername}/>
                       <Button variant="outlined" onClick={Register}>Register</Button>
                     </div>
                     <div className="Register-Password">
-                      <TextField id="standard-basic" label="New Password" variant="standard" value={newPassword} onChange={handleNewPassword}/>
+                      <TextField id="new-password" label="New Password" variant="standard" value={newPassword} onChange={handleNewPassword}/>
                       <Button variant="outlined" onClick={() => handleClose(close)}>Exit</Button>
                     </div>
                   </div>
