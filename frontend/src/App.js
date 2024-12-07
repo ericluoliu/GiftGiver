@@ -199,7 +199,7 @@ function App() {
                       {loginError ? (
                         <p1 className="Error-Text">There was an error logging in</p1>
                         ) : (
-                        <p1>Please enter your login information</p1>
+                        <h3>Enter your login information</h3>
                       )}
                     </div>
                     <div className="Login-Username">
@@ -224,7 +224,7 @@ function App() {
                       {registerError ? (
                         <p1 className="Error-Text">There was an error while registering</p1>
                         ) : (
-                        <p1>Please enter a username and password to register</p1>
+                        <h3>Enter a username and password to register</h3>
                       )}
                     </div>
                     <div className="Register-Username">

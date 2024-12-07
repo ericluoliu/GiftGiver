@@ -83,13 +83,40 @@ User-Interface:
   flex-direction: column;
 }
 
+.Login-Button button, .Register-Button button {
+  background-color: #4B3D32; /* Adjust the color to your preference */
+  color: white; /* Set the text color */
+  border: 2px solid #4B3D32; /* Border color */
+  padding: 10px 20px; /* Adjust padding as needed */
+  font-size: 16px; /* Font size */
+  border-radius: 10px;
+}
+
+.Register-Button button {
+  background-color: #A67C52;
+  border-color: #A67C52;
+  color: beige; 
+}
+
+.Login-Button button:hover {
+  background-color: #3A2A1F; /* Hover effect for a darker shade */
+  border-color: #3A2A1F;
+}
+
+.Register-Button button:hover {
+  background-color: #8E6E3E;
+  border-color: #8E6E3E;
+  color: white;
+  
+}
+
 .Login-Window {
   background-color: white;
   padding: 25px;
   display: flex;
   flex-direction: column;
   width: 60vh;
-  height: 25vh;
+  height: 35vh;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
@@ -127,7 +154,7 @@ User-Interface:
   display: flex;
   flex-direction: column;
   width: 60vh;
-  height: 25vh;
+  height: 35vh;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
