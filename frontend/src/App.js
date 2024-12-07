@@ -287,7 +287,7 @@ function App() {
       <div className="Main">
         <div className="History">
           {loginStatus ? (
-            userHistory.map((query, indexOne) => (
+            userHistory.slice().reverse().map((query, indexOne) => (
               <div key={indexOne} style={{ margin: '10px', padding: '10px', backgroundColor: '#f0f0f0', border: '1px solid #ddd' }}>
                 {query.map((item, indexTwo) => (
                   <div key={indexOne} style={{ margin: '10px', padding: '10px', backgroundColor: '#f0f0f0', border: '1px solid #ddd' }}>
