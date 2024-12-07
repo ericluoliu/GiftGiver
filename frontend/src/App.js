@@ -172,7 +172,7 @@ function App() {
     <div className="App">
       <div className="Navigation-Bar">
         <div className="Logo">
-          <p1>&lt;insert image&gt;</p1>
+          <img src="/eric.jpg" style={{width: "200%", height: "100%"}}/>
         </div>
         <div className="Title">
           <h1>Gift Giver</h1>
