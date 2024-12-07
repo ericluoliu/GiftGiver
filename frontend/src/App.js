@@ -275,7 +275,7 @@ function App() {
               />
             </div>
             <div className="Age">
-              <p1>Age:</p1>
+              <p1>Age: {age}</p1>
               <Box sx={{ width: 150 }}>
                 <Slider defaultValue={25} aria-label="Default" valueLabelDisplay="auto" value={age} onChange={handleAgeChange}/>
               </Box>
