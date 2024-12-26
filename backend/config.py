@@ -1,2 +1,0 @@
-# API Key
-API_KEY = "AIzaSyAT69cbuww2pJ0C5kBUUqiquXpI8jVwXM4"
