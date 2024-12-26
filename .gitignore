@@ -1,2 +1,2 @@
 # Ignore API Key
-backend/config
+backend/config.py
