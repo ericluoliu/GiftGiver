@@ -1,5 +1,4 @@
-# API Key: AIzaSyAT69cbuww2pJ0C5kBUUqiquXpI8jVwXM4
-
+from config import API_KEY
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 from pymongo import MongoClient
@@ -7,7 +6,7 @@ import google.generativeai as genai
 
 app = Flask(__name__)
 CORS(app)
-genai.configure(api_key="AIzaSyAT69cbuww2pJ0C5kBUUqiquXpI8jVwXM4")
+genai.configure(api_key=API_KEY)
 model = genai.GenerativeModel("gemini-1.5-flash")
 uri = "mongodb://localhost:27017/"
 client = MongoClient(uri)
